@@ -36,7 +36,11 @@ export default function Home() {
   }
 
   const gameReset = () => {
-    setShiritoriList(["しりとり"]);
+    let firstWord = wordList[Math.floor(Math.random() * wordList.length)];
+    while (firstWord.slice(-1) === "ん" || !wordList.includes(firstWord)) {
+      firstWord = wordList[Math.floor(Math.random() * wordList.length)];
+    }
+    setShiritoriList([firstWord]);
     inputRef.current.value = "";
     timerStart();
   };
