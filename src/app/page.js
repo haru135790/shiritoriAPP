@@ -5,7 +5,7 @@ import BeforeWord from "./BeforeWord.js"; // Assuming BeforeWord is another comp
 import wordList from "../word-data"; // Importing the word list
 
 export default function Home() {
-  const [shiritoriList, setShiritoriList] = useState(["しりとり"]);
+  const [shiritoriList, setShiritoriList] = useState([]);
 
   const inputRef = useRef();
 
@@ -13,7 +13,7 @@ export default function Home() {
   const timerRef = useRef();
 
   useEffect(() => {
-    timerStart();
+    gameReset();
     return () => clearInterval(timerRef.current);
   }, []);
 
