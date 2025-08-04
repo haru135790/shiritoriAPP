@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import ShiritoriLog from "./ShiritoriLog";
 import BeforeWord from "./BeforeWord.js"; // Assuming BeforeWord is another component you have
+import wordList from "../word-data"; // Importing the word list
 
 export default function Home() {
   const [shiritoriList, setShiritoriList] = useState(["しりとり"]);
@@ -49,9 +50,15 @@ export default function Home() {
       alert("「ん」で終わる単語は使用できません。ゲームを終了します。");
       gameReset();
       return;
+    } else if (!/^[\u3041-\u3096 \u30fc]+$/.test(newWord) || newWord.length < 2) {
+      alert("ひらがなで2文字以上の単語を入力してください。");
+      return;
     } else if (shiritoriList.find(item => item === newWord)) {
       alert("その単語はすでに使用されています。ゲームを終了します。");
       gameReset();
+      return;
+    }else if (!wordList.includes(newWord)) {
+      alert("登録されていない単語です。");
       return;
     }
 
