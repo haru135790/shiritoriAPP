@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# しりとりゲーム
 
-## Getting Started
+## Let's Play !
+[しりとりゲーム](https://haru135790.github.io/shiritoriApp/)
 
-First, run the development server:
+## 概要
+タイムアタック形式のしりとりです。
+制限時間30秒以内になるべく多くの単語をつなげましょう。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+使用可能な単語は約2万語です。[教育基本語彙データベース・日本語教育基本語彙データベース](https://mmsrv.ninjal.ac.jp/brfvep/)を参考にしています。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ルール
+1. ページのロードが完了すると、最初の単語がランダムで決定されます。
+2. テキストボックスに、「前の単語」の最後の文字で始まる単語を入力します。
+3. 単語を入力後、キーボードのEnterキーを押すか、「送信」をクリックします。
+4. 入力した単語が適切な場合、その単語がしりとりリストに追加され、次の単語を入力することができます。
+5. 制限時間の30秒以内にできるだけ多くの単語をつなげてください。
+6. 「リセット」を押すと、ゲームがリセットされます。
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 単語を入力する際の注意
+入力された単語が以下の条件に当てはまる場合、エラーが表示されます。
+- 入力する単語にひらがな以外の文字（カタカナ、漢字、英数字など）が含まれている場合。
+- 入力する単語が前の単語の最後の文字以外で始まる場合。
+- 入力する単語が単語リストに存在しない場合。
+- 入力が1文字のみの場合。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ゲームの終了
+下記の条件のいずれかが満たされると、ゲームが終了します。
+- 制限時間の30秒が経過する。
+- 末尾が「ん」で終わる単語を入力した。
+- 入力した単語がすでに使用された単語である。
 
-## Learn More
+## 使用技術
+- Next.js
+- React
+- Tailwind CSS
+- GitHub Pages
 
-To learn more about Next.js, take a look at the following resources:
+## 参考にしたサイト
+- Next.js
+  - [Next.js Docs](https://nextjs.org/docs)
+  - [YouTube - 【超入門】Next.jsの基本がすぐ分かる！アニメーションで解説してみた](https://www.youtube.com/watch?v=U6GqYyW6FxM)
+  
+- Tailwind CSS
+  - [Tailwind CSS Docs](https://tailwindcss.com/docs)
+  - [Zenn - Tailwind CSS 入門と実践](https://zenn.dev/yohei_watanabe/books/c0b573713734b9)
+  
+- React
+  - [React Docs](https://ja.react.dev/reference/react)
+  - [YouTube - 【React入門】完全初心者OK！１から簡単なTodoアプリを作ってReactの１歩を踏み出してみよう ~Reactチュートリアル~](https://www.youtube.com/watch?v=nRCNL9T3J98)
+  - [YouTube - 【2025年最新】世界一簡単なReact講座！JavaScript初心者・中級者は必見](https://www.youtube.com/watch?v=TgU-FT2WdS4)
+  - [Qiita - React hooksを基礎から理解する (useRef編)](https://qiita.com/seira/items/0e6a2d835f1afb50544d)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- GitHub Pages
+  - [GitHub Pages Docs](https://docs.github.com/ja/pages)
+  - [Qiita - GitHub Pagesの落とし穴と便利なTips](https://qiita.com/smallriv/items/997c9c19bef031460b0e)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Javascript、HTML
+  - [Note - Angular_input要素をエンターキーでsubmitする　#394](https://note.com/ym202110/n/n63af85c3ae43)
 
-## Deploy on Vercel
+- その他(全体的な参考)
+  - [Qiita -  Next.js で作ったサイトを GitHub Pages で公開する方法を爆速で丁寧に説明する](https://qiita.com/unreadabread/items/920420c24fc49cb3b392#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB)
+  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## その他
+- コードの補完やデバックにGithub copilotを使用して開発しました。
+- github pagesでホスティングしています。
